@@ -1,0 +1,18 @@
+.app-container {
+  background-image: url('./assets/IMG-20251118-WA0030.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 12px 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.welcome-msg {
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
