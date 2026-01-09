@@ -1,18 +1,50 @@
 .app-container {
-  background-image: url('./assets/IMG-20251118-WA0030.jpg');
+  /* Dynamic Background */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/IMG-20251118-WA0030.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 12px 20px;
+  background-position: center;
+
+  /* Glass Layout */
+  width: 100%;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
   height: 100vh;
+  height: 100dvh;
+  
+  margin: 0 auto;
+  padding: 20px;
+  
   display: flex;
   flex-direction: column;
-  margin-top: 0;
-  margin-bottom: 0;
+  
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
 }
 .welcome-msg {
   color: rgb(255, 255, 255);
   text-align: center;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 12px;
+  }
+  
+  .welcome-msg {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+}
+
+/* iPhone SE / Galaxy S8+ / Small Screen Specific */
+@media (max-width: 430px) {
+  .app-container {
+    padding: 8px; /* Tighter padding */
+  }
+  
+  .welcome-msg {
+    font-size: 0.9rem;
+  }
 }
