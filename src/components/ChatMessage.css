@@ -12,6 +12,31 @@
   backdrop-filter: blur(5px);
 }
 
+/* Markdown styling inside chat bubbles */
+.chat-message-text p {
+  margin: 0;
+}
+
+.chat-message-text p + p {
+  margin-top: 0.5em;
+}
+
+.chat-message-text strong {
+  font-weight: 600;
+}
+
+.chat-message-text em {
+  font-style: italic;
+}
+
+.chat-message-text code {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
 .chat-message-user {
   display: flex;
   justify-content: flex-end;

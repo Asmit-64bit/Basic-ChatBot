@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Chatbot } from 'supersimpledev'
+import { getGeminiResponse } from '../services/gemini.js'
 import loading from '../assets/loading-spinner.gif'
 import './ChatInput.css'
 
@@ -35,7 +35,7 @@ export function ChatInput({ chatMessages, setChatMessages }) {
         id: crypto.randomUUID(),
       },
     ]);
-    const response = await Chatbot.getResponseAsync(inputText);
+    const response = await getGeminiResponse(inputText);
     setChatMessages([
       ...newChatMessages,
       {
