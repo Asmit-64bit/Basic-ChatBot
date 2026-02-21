@@ -168,7 +168,7 @@ function App() {
             </div>
 
             <p className="commands-hint">
-              Try <code>/play lofi beats</code> or <code>/imagine sunset over mountains</code>
+              Try <code>/play lofi beats</code>
             </p>
           </div>
         ) : (

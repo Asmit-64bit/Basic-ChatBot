@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react';
 import './Sidebar.css';
 
 export function Sidebar({ isOpen, onClose, history, onLoadChat, onDeleteChat, onNewChat }) {

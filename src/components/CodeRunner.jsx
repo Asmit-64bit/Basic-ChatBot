@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import './CodeRunner.css';
 
 export function CodeRunner({ code }) {
     const [output, setOutput] = useState(null);
     const [isRunning, setIsRunning] = useState(false);
-    const iframeRef = useRef(null);
 
     function runCode() {
         setIsRunning(true);
