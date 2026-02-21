@@ -1,24 +1,285 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-:root {
-  --primary-color: #6366f1; /* Indigo */
-  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --bg-dark: #0f172a;
+/* ═══════════════════════════════════════
+   Design Tokens — Warm & Humane (Dark)
+   ═══════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  /* Background — warm dark, not cold */
+  --bg-primary: #151118;
+  --bg-secondary: #1c1722;
+  --bg-surface: rgba(255, 240, 230, 0.04);
+
+  /* Accent — warm violet + peach */
+  --accent-warm: #60a5fa;
+  --accent-peach: #3b82f6;
+  --accent-rose: #2563eb;
+  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
+  --accent-glow: rgba(59, 130, 246, 0.25);
+
+  /* Soft glass */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-border-active: rgba(255, 255, 255, 0.14);
+
+  /* Text — softer whites */
+  --text-primary: #ede9f6;
+  --text-secondary: rgba(237, 233, 246, 0.6);
+  --text-muted: rgba(237, 233, 246, 0.3);
+
+  /* Bubbles */
+  --bubble-user: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  --bubble-bot-bg: rgba(255, 255, 255, 0.05);
+  --bubble-bot-border: rgba(255, 255, 255, 0.08);
+
+  /* Spacing */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 50px;
+
+  /* Timing — gentle, organic */
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
-* {
+/* ═══════════════════════════════════════
+   Light Theme
+   ═══════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-primary: #faf8f5;
+  --bg-secondary: #f0ece6;
+  --bg-surface: rgba(0, 0, 0, 0.03);
+
+  --accent-warm: #3b82f6;
+  --accent-peach: #2563eb;
+  --accent-rose: #1d4ed8;
+  --accent-gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+  --accent-glow: rgba(59, 130, 246, 0.15);
+
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-bg-hover: rgba(0, 0, 0, 0.06);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-active: rgba(0, 0, 0, 0.15);
+
+  --text-primary: #1e1b2e;
+  --text-secondary: rgba(30, 27, 46, 0.6);
+  --text-muted: rgba(30, 27, 46, 0.35);
+
+  --bubble-user: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  --bubble-bot-bg: rgba(0, 0, 0, 0.03);
+  --bubble-bot-border: rgba(0, 0, 0, 0.08);
+}
+
+/* ═══════════════════════════════════════
+   Reset
+   ═══════════════════════════════════════ */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-dark);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.6;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ═══════════════════════════════════════
+   Scrollbar — subtle
+   ═══════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.35);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.2) transparent;
+}
+
+/* ═══════════════════════════════════════
+   Animations — gentle, organic
+   ═══════════════════════════════════════ */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 0.2;
+  }
+}
+
+@keyframes breathe2 {
+
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.12;
+  }
+
+  50% {
+    transform: scale(1.06) translate(10px, -8px);
+    opacity: 0.18;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(15px, -10px);
+  }
+
+  66% {
+    transform: translate(-10px, 8px);
+  }
+}
+
+@keyframes float2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(-12px, 12px);
+  }
+
+  66% {
+    transform: translate(8px, -14px);
+  }
+}
+
+@keyframes typingDot {
+
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+
+  40% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(14deg);
+  }
+
+  20% {
+    transform: rotate(-8deg);
+  }
+
+  30% {
+    transform: rotate(14deg);
+  }
+
+  40% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  60% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes softPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  50% {
+    box-shadow: 0 0 35px var(--accent-glow), 0 0 50px rgba(251, 146, 60, 0.08);
+  }
+}
+
+/* ═══════════════════════════════════════
+   Selection
+   ═══════════════════════════════════════ */
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: white;
 }

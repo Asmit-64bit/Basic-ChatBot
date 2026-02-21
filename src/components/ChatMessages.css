@@ -1,6 +1,23 @@
+/* ═══════════════════════════════════════
+   Chat Messages Container
+   ═══════════════════════════════════════ */
 .chat-messages-container {
-  flex-grow: 1;
-  margin-top: 20px;
-  overflow: scroll;
-  scrollbar-width: none;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+/* ═══════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .chat-messages-container {
+    padding: 12px 12px 4px;
+    gap: 12px;
+  }
 }

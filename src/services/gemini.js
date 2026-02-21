@@ -29,20 +29,22 @@ export async function getGeminiResponse(userPrompt) {
         return "Error: API Key is missing. Please add VITE_GEMINI_API_KEY to your .env file.";
     }
 
-    // Add current date/time context so the AI knows the real date
+    // Add current date/time context and system instructions string
     const now = new Date();
-    const dateContext = `[System Context: Today's date is ${now.toLocaleDateString('en-US', {
+    const systemInstruction = `[System Context: Today's date is ${now.toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric'
-    })}. Current time is ${now.toLocaleTimeString('en-US')}.]\n\nUser: ${userPrompt}`;
+    })}. Current time is ${now.toLocaleTimeString('en-US')}.]
+    
+User: ${userPrompt}`;
 
     // Try each model until one works
     for (const modelName of MODELS_TO_TRY) {
         try {
             console.log(`Attempting with ${modelName}...`);
-            const response = await generateWithModel(modelName, dateContext);
+            const response = await generateWithModel(modelName, systemInstruction);
             console.log(`Success with ${modelName}!`);
             return response;
         } catch (error) {

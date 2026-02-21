@@ -1,0 +1,39 @@
+/* Code Runner */
+.code-runner {
+    margin-top: 6px;
+}
+
+.code-run-btn {
+    padding: 5px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.code-run-btn:hover {
+    background: var(--glass-bg-hover);
+    color: var(--accent-warm);
+}
+
+.code-run-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.code-output {
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: #86efac;
+    white-space: pre-wrap;
+    border: 1px solid rgba(134, 239, 172, 0.1);
+    line-height: 1.5;
+}

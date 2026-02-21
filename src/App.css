@@ -1,50 +1,231 @@
+/* ═══════════════════════════════════════
+   App Container
+   ═══════════════════════════════════════ */
 .app-container {
-  /* Dynamic Background */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/IMG-20251118-WA0030.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  /* Glass Layout */
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
   height: 100vh;
   height: 100dvh;
-  
   margin: 0 auto;
-  padding: 20px;
-  
   display: flex;
   flex-direction: column;
-  
-  box-shadow: 0 0 50px rgba(0,0,0,0.5);
   position: relative;
   overflow: hidden;
-}
-.welcome-msg {
-  color: rgb(255, 255, 255);
-  text-align: center;
+  background: var(--bg-primary);
 }
 
-/* Mobile Responsive Styles */
+/* ═══════════════════════════════════════
+   Soft Ambient Background
+   ═══════════════════════════════════════ */
+.bg-ambient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.ambient-blob--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.25), transparent 70%);
+  top: -20%;
+  right: -15%;
+  animation: breathe 12s ease-in-out infinite;
+}
+
+.ambient-blob--2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.15), transparent 70%);
+  bottom: -20%;
+  left: -20%;
+  animation: breathe2 15s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════
+   Content
+   ═══════════════════════════════════════ */
+.app-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════
+   Empty State — Warm & Friendly
+   ═══════════════════════════════════════ */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 28px;
+  animation: fadeIn 0.7s var(--ease-out);
+  overflow-y: auto;
+}
+
+.greeting-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 24px;
+}
+
+.greeting-wave {
+  font-size: 2.8rem;
+  display: inline-block;
+  margin-bottom: 12px;
+  animation: wave 2.5s ease-in-out 0.5s 1;
+  transform-origin: 70% 70%;
+}
+
+.greeting-text {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.greeting-sub {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 380px;
+}
+
+/* ═══════════════════════════════════════
+   Suggestion List — Friendly, Listlike
+   ═══════════════════════════════════════ */
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 16px;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  font-family: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+
+.suggestion-item:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-active);
+  transform: translateX(4px);
+}
+
+.suggestion-item:active {
+  transform: translateX(2px) scale(0.99);
+}
+
+.suggestion-emoji {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.suggestion-text {
+  flex: 1;
+  font-weight: 500;
+}
+
+.suggestion-arrow {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out), color 0.25s;
+}
+
+.suggestion-item:hover .suggestion-arrow {
+  transform: translateX(3px);
+  color: var(--accent-warm);
+}
+
+/* ═══════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════ */
 @media (max-width: 480px) {
   .app-container {
-    padding: 12px;
+    max-width: 100%;
   }
-  
-  .welcome-msg {
-    font-size: 0.95rem;
-    padding: 0 10px;
+
+  .empty-state {
+    padding: 0 18px;
+  }
+
+  .greeting-wave {
+    font-size: 2.2rem;
+  }
+
+  .greeting-text {
+    font-size: 1.6rem;
+  }
+
+  .greeting-sub {
+    font-size: 0.9rem;
+  }
+
+  .suggestion-item {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    gap: 12px;
   }
 }
 
-/* iPhone SE / Galaxy S8+ / Small Screen Specific */
-@media (max-width: 430px) {
-  .app-container {
-    padding: 8px; /* Tighter padding */
-  }
-  
-  .welcome-msg {
-    font-size: 0.9rem;
-  }
+/* ═══════════════════════════════════════
+   Commands Hint
+   ═══════════════════════════════════════ */
+.commands-hint {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 4px 0 8px;
+}
+
+.commands-hint code {
+  background: var(--glass-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'SF Mono', monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--glass-border);
+}
+
+/* ═══════════════════════════════════════
+   Light Theme Adjustments
+   ═══════════════════════════════════════ */
+[data-theme="light"] .ambient-blob--1 {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
+}
+
+[data-theme="light"] .ambient-blob--2 {
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.08), transparent 70%);
 }

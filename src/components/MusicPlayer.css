@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════
+   Music Player
+   ═══════════════════════════════════════ */
+.music-player {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.15);
+    max-width: 320px;
+}
+
+.music-player-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+}
+
+.music-player-icon {
+    font-size: 1.3rem;
+}
+
+.music-player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.music-player-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.music-player-sub {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+/* Actions */
+.music-player-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px 14px;
+}
+
+.music-play-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: var(--accent-gradient);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s var(--ease-spring);
+}
+
+.music-play-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.music-play-btn:active {
+    transform: scale(0.96);
+}
+
+.music-play-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+}
+
+.music-play-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.music-yt-link {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.music-yt-link:hover {
+    color: var(--accent-warm);
+}
+
+/* Embed */
+.music-player-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.music-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Fallback */
+.music-player-fallback {
+    padding: 10px 16px 14px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.music-player-fallback p {
+    margin-bottom: 6px;
+}
